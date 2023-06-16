@@ -1,0 +1,52 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.Form1 {
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18), 0 4px 10px rgba(0, 0, 0, 0.258);
+  border: 1px solid #ccc;
+  width: 600px;
+  background: #ccc;
+}
+.form-content {
+  justify-content: center;
+  position: relative;
+  left: 250px;
+  top: 150px;
+}
+.hostel_img {
+  width: 200px;
+  position: relative;
+}
+
+.main-wrapper {
+  position: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../images/hostel2.avif);
+  height: 100vh;
+  width: 250vh;
+}
+#content-wrapper {
+  background: linear-gradient(145.11deg, #d9eef7 3.3%, #f7f7f7 44.21%);
+  background-position: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.form-horizontal {
+  border-radius: 8px;
+  border: 1px solid white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.23);
+  width: 70%;
+}
+.pass-img {
+  width: 50px;
+  position: relative;
+}
+.form-control {
+  margin-left: 80px;
+}
