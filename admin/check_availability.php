@@ -32,4 +32,5 @@ if($opass==$pass)
 echo "<span style='color:green'> Password  matched .</span>";
 else echo "<span style='color:red'> Password Not matched</span>";
 }
+
 ?>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2023 at 09:29 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Jul 23, 2023 at 07:45 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -117,17 +117,18 @@ CREATE TABLE `registration` (
   `updationDate` varchar(500) NOT NULL,
   `roomno` int(11) DEFAULT NULL,
   `foodstatus` int(11) DEFAULT NULL,
-  `seater` int(11) DEFAULT NULL
+  `seater` int(11) DEFAULT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `registration`
 --
 
-INSERT INTO `registration` (`id`, `feespm`, `stayfrom`, `duration`, `course`, `regno`, `firstName`, `middleName`, `lastName`, `gender`, `contactno`, `emailid`, `egycontactno`, `guardianName`, `guardianRelation`, `guardianContactno`, `corresAddress`, `corresCIty`, `corresState`, `corresPincode`, `pmntAddress`, `pmntCity`, `pmnatetState`, `pmntPincode`, `postingDate`, `updationDate`, `roomno`, `foodstatus`, `seater`) VALUES
-(13, 11000, '2023-05-28', 2, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 333333, 'nnnnn', 'sssssssss', 9999, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-14 11:53:07', '', 202, 0, 2),
-(14, 11000, '2023-05-28', 2, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 333333, 'nnnnn', 'sssssssss', 9999, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-14 11:53:45', '', 202, 0, 2),
-(15, 11000, '2023-06-06', 10, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudhapantha111@gmail.com', 8976666, 'kkkkk', 'kkkkkk', 888888, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-15 01:08:10', '', 202, 0, 2);
+INSERT INTO `registration` (`id`, `feespm`, `stayfrom`, `duration`, `course`, `regno`, `firstName`, `middleName`, `lastName`, `gender`, `contactno`, `emailid`, `egycontactno`, `guardianName`, `guardianRelation`, `guardianContactno`, `corresAddress`, `corresCIty`, `corresState`, `corresPincode`, `pmntAddress`, `pmntCity`, `pmnatetState`, `pmntPincode`, `postingDate`, `updationDate`, `roomno`, `foodstatus`, `seater`, `status`) VALUES
+(13, 11000, '2023-05-28', 2, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 333333, 'nnnnn', 'sssssssss', 9999, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-14 11:53:07', '', 202, 0, 2, 'Approved'),
+(14, 11000, '2023-05-28', 2, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 333333, 'nnnnn', 'sssssssss', 9999, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-14 11:53:45', '', 202, 0, 2, ''),
+(15, 11000, '2023-06-06', 10, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudhapantha111@gmail.com', 8976666, 'kkkkk', 'kkkkkk', 888888, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-15 01:08:10', '', 202, 0, 2, '');
 
 -- --------------------------------------------------------
 
@@ -218,7 +219,8 @@ INSERT INTO `userlog` (`id`, `userId`, `userEmail`, `userIp`, `city`, `country`,
 (28, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 03:44:23'),
 (29, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 04:08:11'),
 (30, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 05:44:50'),
-(31, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 06:11:40');
+(31, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 06:11:40'),
+(32, 26, 'myemail@mail.com', 0x3a3a31, '', '', '2023-07-23 17:20:23');
 
 -- --------------------------------------------------------
 
@@ -251,7 +253,8 @@ INSERT INTO `userregistration` (`id`, `regNo`, `firstName`, `middleName`, `lastN
 (22, '12345', 'Prawesh', '', 'Dhungana', 'male', 9851339619, 'prawesh@gm', '12345', '2023-06-13 04:22:04', '', ''),
 (23, '12345', 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudhapantha21@gm', 'sudha', '2023-06-13 05:28:30', '', ''),
 (24, '12345', 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudhapantha21@gm', 'sudha', '2023-06-13 05:33:22', '', ''),
-(25, '05', 'Kritika', '.', 'Yesmali', 'female', 9851339619, 'kritika@gmail.com', 'kritika', '2023-06-13 05:34:22', '', '');
+(25, '05', 'Kritika', '.', 'Yesmali', 'female', 9851339619, 'kritika@gmail.com', 'kritika', '2023-06-13 05:34:22', '', ''),
+(26, '753159', 'Bishal', '', 'Kc', 'male', 98666666666, 'myemail@mail.com', '123456', '2023-07-23 17:20:02', '', '');
 
 --
 -- Indexes for dumped tables
@@ -319,7 +322,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -337,13 +340,13 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `userregistration`
 --
 ALTER TABLE `userregistration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

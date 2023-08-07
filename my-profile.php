@@ -4,6 +4,7 @@ include('includes/config.php');
 date_default_timezone_set('Asia/Kolkata');
 include('includes/checklogin.php');
 check_login();
+$conn = mysqli_connect("localhost","root","","hostel1");
 $aid=$_SESSION['id'];
 if(isset($_POST['update']))
 {
@@ -15,14 +16,30 @@ $lname=$_POST['lname'];
 $gender=$_POST['gender'];
 $contactno=$_POST['contact'];
 $udate = date('d-m-Y h:i:s', time());
-$query="update  userRegistration set regNo=?,firstName=?,middleName=?,lastName=?,gender=?,contactNo=?,updationDate=? where id=?";
+$query="update  userRegistration set regno=?,firstName=?,middleName=?,lastName=?,gender=?,contactNo=?,updationDate=? where id=?";
 $stmt = $mysqli->prepare($query);
 $rc=$stmt->bind_param('sssssisi',$regno,$fname,$mname,$lname,$gender,$contactno,$udate,$aid);
 $stmt->execute();
 echo"<script>alert('Profile updated Succssfully');</script>";
 }
 ?>
+<!-- <php 
+$query1 ="SELECT * from userregistration order by regno desc limit 1";
+$result = mysqli_query($conn,$query1);
+$row = mysqli_fetch_array($result);
+$lastid = $row['regno'];
+if($lastid == " "){
+    $regid = "REG1";
+}
+else{
+    $regid = substr($lastid,3);
+    $regid = intval($regid);
+    $regid ="REG" . ($regid + 1);
+}
 
+
+
+> -->
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -33,7 +50,7 @@ echo"<script>alert('Profile updated Succssfully');</script>";
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	<title>Profile Updation</title>
-	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,28 +75,46 @@ return true;
 </script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-3" href="hosteldashboard.php"> Hostel</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link mx-2" aria-current="page" href="hostelindex.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="logout.php">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-	<section id="content_wrapper">
+	<section class="main_wrapper">
+	<nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <a class="navbar-brand text-center" href="#"> <img src="img/logo.png"height="80%" width="50%"alt="logo" class="logo"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                    </button>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-12 my-4">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                            <ul class="navbar-nav mx-5">
+                            <li class="nav-item">
+                            <a class="nav-link mx-3 text-light fs-5" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">AboutUs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="registration.php">Blogs</a>
+            
+                            </li>
+                            <li class="nav-item">
+							<a class="nav-link mx-3 text-light fs-5" href="Logout.php">LogOut</a>
+                            </li>
+
+                       </ul>  
+                     </div>
+                    </div>
+                </div>
+            </div>
+                
+      </div>
+   </nav> 
 		<div class="content-wrapper">
 			<div class="container-fluid">
 	<?php	
@@ -95,29 +130,29 @@ $aid=$_SESSION['id'];
 	  	?>	
 				<div class="row">
 					<div class="col-md-12">
-					                    <div class="text-center my-2">
+					                    <div class="text-center text-light my-2">
 													 <img src="img/admin.jpg" alt="password" class="pass1-img my-3">
 										</div>
-						<h2 class="page-title text-center"><?php echo $row->firstName;?>'s&nbsp;Profile </h2>
+						<h2 class="page-title text-center text-light"><?php echo $row->firstName;?>'s&nbsp;Profile </h2>
 
 						<div class="row">
 							<div class="col-md-12">
 								<div class="panel panel-primary">
-									<div class="panel-heading text-center my-2">
+									<div class="panel-heading text-center text-light my-2">
 
 Last Updation date : &nbsp; <?php echo $row->updationDate;?> 
 </div>
 									
 
 <div class="panel-body">
-<form method="post" action="" name="registration" class="form-horizontal mx-auto text-center" onSubmit="return valid();">
+<form method="post" action="" name="registration" class="form-horizontal mx-auto text-center text-light" onSubmit="return valid();">
 								
 								
 
 <div class="form-group my-3">
 <label class="col-sm-4 control-label"> Registration No : </label>
 <div class="col-sm-8 mx-auto">
-<input type="text" name="regno" id="regno"  class="form-control" required="required" value="<?php echo $row->regNo;?>" >
+<input type="text" name="regno" id="regno"  class="form-control" required="required" value="<?php echo $row->regno;?>" >
 </div>
 </div>
 
@@ -179,7 +214,7 @@ Last Updation date : &nbsp; <?php echo $row->updationDate;?>
 
 <div class="col-sm-6 col-sm-offset-4 my-3 mx-auto">
 
-<input type="submit" name="update" Value="Update Profile" class="btn btn-primary">
+<input type="submit" name="update" Value="Update Profile" class="btn btn-danger">
 </div>
 </form>
 

@@ -14,6 +14,16 @@ if(isset($_GET['del']))
         $stmt->close();	   
         echo "<script>alert('Data Deleted');</script>" ;
 }
+if(isset($_GET['approval']))
+{
+	$id=intval($_GET['approval']);
+	$adn="update registration set `status`='Approved' where id=?";
+		$stmt= $mysqli->prepare($adn);
+		$stmt->bind_param('i',$id);
+        $stmt->execute();
+        $stmt->close();	   
+        echo "<script>alert('Booking Approved Success');</script>" ;
+}
 ?>
 <!doctype html>
 <html lang="en" class="no-js">
@@ -25,7 +35,7 @@ if(isset($_GET['del']))
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	<title>Manage Rooms</title>
+	<title>Manage Student</title>
 	<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/main.css" type="text/css">
 	       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -79,7 +89,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 					<div class="col-md-12">
 						<h2 class="page-title text-center">Manage Students</h2>
 						<div class="panel panel-default">
-							<div class="panel-heading text-center">All Room Details</div>
+							<div class="panel-heading text-center">All Details</div>
 							<div class="panel-body">
 								<table id="zctb" class="display table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
 									<thead>
@@ -91,6 +101,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 											<th>room no  </th>
 											<th>Seater </th>
 											<th>Staying From </th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -103,6 +114,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 											<th>Room no  </th>
 											<th>Seater </th>
 											<th>Staying From </th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</tfoot>
@@ -125,8 +137,9 @@ while($row=$res->fetch_object())
 <td><?php echo $row->roomno;?></td>
 <td><?php echo $row->seater;?></td>
 <td><?php echo $row->stayfrom;?></td>
+<td><?php echo $row->status == NULL ? "Pending":$row->status;?></td>
 <td>
-<a href="javascript:void(0);"  onClick="popUpWindow('http://localhost/hostel/admin/full-profile.php?id=<?php echo $row->id;?>');" title="View Full Details"><i class="fa fa-desktop"></i></a>&nbsp;&nbsp;
+<a href="manage-students.php?approval=<?php echo $row->id;?>"  title="Approve"><i class="fa fa-check"></i></a>&nbsp;&nbsp;
 <a href="manage-students.php?del=<?php echo $row->id;?>" title="Delete Record" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
 										</tr>
 									<?php

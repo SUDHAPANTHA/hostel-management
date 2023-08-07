@@ -69,7 +69,7 @@ $stmt->close();
 ?>
 <div class="stat-panel-number h1 "><?php echo $count;?></div>
            <p class="card-title lead">Students</p> 
-          <a href="manage-students.php" class="block-anchor panel-footer text-decoration-none text-dark">Full Detail <i class="fa fa-arrow-right"></i></a>
+          <a href="view_bookings.php" class="block-anchor panel-footer text-decoration-none text-dark">Full Detail <i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
       </a>
@@ -113,7 +113,7 @@ $stmt1->close();
 ?>
 													<div class="stat-panel-number h1 "><?php echo $count1;?></div>
          <p class="card-title lead">Total rooms</p> 
-         <a href="manage-rooms.php" class="block-anchor panel-footer text-center text-decoration-none text-dark">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+         <a href="manage-room.php" class="block-anchor panel-footer text-center text-decoration-none text-dark">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
       </a>

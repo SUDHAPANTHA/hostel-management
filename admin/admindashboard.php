@@ -12,7 +12,7 @@ check_login();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard</title>
-	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,37 +25,56 @@ check_login();
        
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<section class="main-wrapper">
   <div class="container-fluid">
-    <a class="navbar-brand mx-3" href="index.php">Admin</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link mx-2" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="logout.php">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <a class="navbar-brand text-center" href="rooms.php"> <img src="images/logo.png"height="80%" width="50%"alt="logo" class="logo"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                    </button>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-12 my-4">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                            <ul class="navbar-nav mx-5">
+                            <li class="nav-item">
+                            <a class="nav-link mx-3 text-light fs-5" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">AboutUs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="">Blogs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="logout.php">LogOut</a>
+                            </li>
 
-<div class="container py-5">
+                       </ul>  
+                     </div>
+                    </div>
+                </div>
+            </div>
+                
+      </div>
+   </nav>
+   
+   <div class="container py-5">
   <div class="row">
     <div class="col-lg-12 p-5">
-      <h1> <i class="fa fa-tachometer" aria-hidden="true"></i> <a href="dashboard.php" class="text-decoration-none text-dark">Dashboard </a></h1>
-      <hr />
+      <h1> <i class="fa fa-tachometer text-light" aria-hidden="true"></i> <a href="" class="text-decoration-none text-light">Dashboard </a></h1>
+      <hr class="text-light"/>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 p-2">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-2">
       <a class="text-decoration-none" href="#">
         <div class="card p-3 shadow text-center border-0">
           <div class="card-body">
@@ -67,7 +86,7 @@ check_login();
       </a>
     </div>
 
-    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 p-2">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-2">
       <a class="text-decoration-none" href="#">
         <div class="card p-3 shadow bg-purple text-center border-0">
           <div class="card-body">
@@ -78,8 +97,8 @@ check_login();
                       <button type="button" class=" border-0 text-primary fs-4 bg-white dropdown-toggle" data-bs-toggle="dropdown">
                        Room</button>
                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="create-room.php">Add Room</a></li>
-                      <li><a class="dropdown-item" href="manage-rooms.php">Manage Room</a></li>
+                      <li><a class="dropdown-item" href="add_room.php">Add Room</a></li>
+                      <li><a class="dropdown-item" href="admin_panel.php">Manage Room</a></li>
                     </ul>
               </div>
           </div>
@@ -87,51 +106,22 @@ check_login();
       </a>
     </div>
 
-    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 p-2">
-      <a class="text-decoration-none" href="#">
-        <div class="card p-3 shadow bg-purple text-center border-0">
-          <div class="card-body">
-            <i class="fa-solid fa-users fa-2x" aria-hidden="true"></i>
-            <hr />
-           <a href="registration.php" class="text-decoration-none">  <p class="card-title lead">Student Reg</p> </a>
-          </div>
-        </div>
-      </a>
-    </div>
+    
+    
 
-    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 p-2">
-      <a class="text-decoration-none" href="#">
-        <div class="card p-3 shadow bg-purple text-center border-0">
-          <div class="card-body">
-            <i class="fa-solid fa-user-check fa-2x" aria-hidden="true"></i>
-            <hr />
-           <a href=""></a>
-           <div class="dropdown">
-                      <button type="button" class=" border-0 text-primary fs-4 bg-white dropdown-toggle" data-bs-toggle="dropdown">
-                       Courses</button>
-                   <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="add-courses.php">Add Courses</a></li>
-                      <li><a class="dropdown-item" href="manage-courses.php">Manage Courses</a></li>
-                    </ul>
-              </div>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 p-2">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-2">
       <a class="text-decoration-none" href="#">
         <div class="card p-3 shadow bg-purple text-center border-0">
           <div class="card-body">
             <i class="fa fa-question fa-2x" aria-hidden="true"></i>
             <hr />
-            <a href="manage-students.php" class="text-decoration-none"> <p class="card-title lead">Manage Student</p></a>
+            <a href="view_bookings.php" class="text-decoration-none"> <p class="card-title lead">Manage Student</p></a>
           </div>
         </div>
       </a>
     </div>
 
-    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 p-2">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-2">
       <a class="text-decoration-none" href="#" data-toggle="modal" data-target="#modelHELP">
         <div class="card p-3 shadow bg-purple text-center border-0">
           <div class="card-body">
@@ -145,13 +135,10 @@ check_login();
 
   </div>
 </div>
-
-<footer class="footer fixed-bottom">
-  <div class="row text-center p-3">
-    <p class="small text-muted">Develop & Design by @Sukri
-	</p>
   </div>
-</footer>
+
+</section>
+
 
 <!-- Modal -->
 

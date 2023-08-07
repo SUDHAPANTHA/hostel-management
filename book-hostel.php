@@ -3,7 +3,8 @@ session_start();
 include('includes/config.php');
 include('includes/checklogin.php');
 check_login();
-//code for registration
+$conn = mysqli_connect("localhost","root","","hostel1");
+// code for registration
 if(isset($_POST['submit']))
 {
 $roomno=$_POST['room'];
@@ -20,6 +21,12 @@ $lname=$_POST['lname'];
 $gender=$_POST['gender'];
 $contactno=$_POST['contact'];
 $emailid=$_POST['email'];
+if(empty($emailid)){
+    $err="Please Enter Email";
+}
+elseif(!filter_var($emailid, FILTER_VALIDATE_EMAIL)){
+    $err ="Invalid email address";
+}
 $emcntno=$_POST['econtact'];
 $gurname=$_POST['gname'];
 $gurrelation=$_POST['grelation'];
@@ -32,12 +39,23 @@ $paddress=$_POST['paddress'];
 $pcity=$_POST['pcity'];
 $pstate=$_POST['pstate'];
 $ppincode=$_POST['ppincode'];
-$query="insert into  registration(roomno,seater,feespm,foodstatus,stayfrom,duration,course,regno,firstName,middleName,lastName,gender,contactno,emailid,egycontactno,guardianName,guardianRelation,guardianContactno,corresAddress,corresCIty,corresState,corresPincode,pmntAddress,pmntCity,pmnatetState,pmntPincode) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-$stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('iiiisisissssisississsisssi',$roomno,$seater,$feespm,$foodstatus,$stayfrom,$duration,$course,$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$emcntno,$gurname,$gurrelation,$gurcntno,$caddress,$ccity,$cstate,$cpincode,$paddress,$pcity,$pstate,$ppincode);
-$stmt->execute();
-echo"<script>alert('Student Succssfully register');</script>";
-}
+// $checkUser="SELECT * from registration WHERE email = '$emailid' and regno='$regno'";
+// $result = mysqli_query($conn,$checkUser);
+// $count = mysqli_num_rows($result);
+// echo "$count";
+// if($count>0){
+//     echo"<script>alert ('You've already booked');</script>";
+// }
+// else{
+	$query="insert into  registration(roomno,seater,feespm,foodstatus,stayfrom,duration,course,regno,firstName,middleName,lastName,gender,contactno,emailid,egycontactno,guardianName,guardianRelation,guardianContactno,corresAddress,corresCIty,corresState,corresPincode,pmntAddress,pmntCity,pmnatetState,pmntPincode) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	$stmt = $mysqli->prepare($query);
+	$rc=$stmt->bind_param('iiiisisissssisississsisssi',$roomno,$seater,$feespm,$foodstatus,$stayfrom,$duration,$course,$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$emcntno,$gurname,$gurrelation,$gurcntno,$caddress,$ccity,$cstate,$cpincode,$paddress,$pcity,$pstate,$ppincode);
+	$stmt->execute();
+	echo"<script>alert('Student Succssfully booked');</script>";
+	}
+
+
+
 ?>
 
 <!doctype html>
@@ -111,7 +129,9 @@ $('#fpm').val(data);
 				            if($rs)
 				          { ?>
 			             <h3 style="color: red" align="left">Hostel already booked by you</h3>
-				         <?php }
+				         <?php 
+						 exit();
+						 }
 				            else{
 							echo "";
 							}			
@@ -136,7 +156,7 @@ while($row=$res->fetch_object())
 <option value="<?php echo $row->room_no;?>"> <?php echo $row->room_no;?></option>
 <?php } ?>
 </select> 
-<!-- <span id="room-availability-status" style="font-size:12px;"></span> -->
+<span id="room-availability-status" style="font-size:12px;"></span>
 
 </div>
 </div>
@@ -155,7 +175,7 @@ while($row=$res->fetch_object())
 </div>
 
 
-<div class="form-group">
+<div class="form-group"> 
 <label class="col-sm-4 control-label">Duration</label>
 <div class="col-sm-8">
 <select name="duration" id="duration" class="form-control">
@@ -173,6 +193,7 @@ while($row=$res->fetch_object())
 <option value="11">11</option>
 <option value="12">12</option>
 </select>
+
 </div>
 </div>
 	
@@ -180,19 +201,26 @@ while($row=$res->fetch_object())
 <div class="form-group">
 <label class="col-sm-4 control-label">Fees Structure</label>
 <div class="col-sm-12">
-<input type="text" name="fpm" id="fpm"  class="form-control" >
-
+<input type="text" name="fpm" id="fpm"  class="form-control">
 </div>
 </div>
 <div class="form-group">
 <label class="col-sm-8 control-label">Food Status</label>
 <div class="col-sm-12">
-<input type="radio" value="0" name="foodstatus" checked="checked"> Without Food
-<input type="radio" value="1" name="foodstatus"> With Food(Rs 2000.00 Per Month Extra)
+
+<input type="radio" value="add" name="foodstatus" id="withFood"> With Food(Rs 2000.00 Per Month Extra)
+<input type="radio" value="notAdd" name="foodstatus" id="withoutFood"> Without Food
 </div>
-</div>	
+</div>
+	
 
-
+<!-- <div class="form-group">
+<label class="col-sm-8 control-label">Total Amount</label>
+<span id="finalFeeSpan">0</span>
+<div class="col-sm-8">
+<input type="text" name="ta" id="ta"  class="result form-control" >
+</div>
+</div> -->
 
 <div class="form-group">
 <label class="col-sm-12 control-label"><h4 style="color: green" align="left">Personal infoormation </h4> </label>
@@ -266,7 +294,8 @@ $aid=$_SESSION['id'];
 <div class="form-group">
 <label class="col-sm-4 control-label">Contact No : </label>
 <div class="col-sm-8">
-<input type="text" name="contact" id="contact" value="<?php echo $row->contactNo;?>"  class="form-control" readonly>
+
+<input type="number" name="contact" id="contact" value="<?php echo $row->contactNo;?>"  class="form-control" onkeypress="phoneno()" maxlength="10" readonly>
 </div>
 </div>
 
@@ -281,7 +310,7 @@ $aid=$_SESSION['id'];
 <div class="form-group">
 <label class="col-sm-4 control-label">Emergency Contact: </label>
 <div class="col-sm-8">
-<input type="text" name="econtact" id="econtact"  class="form-control" required="required">
+<input type="number" name="econtact" id="econtact"  class="form-control"  required="required">
 </div>
 </div>
 
@@ -326,7 +355,7 @@ $aid=$_SESSION['id'];
 </div>	
 
 <div class="form-group">
-<label class="col-sm-4 control-label">State </label>
+<label class="col-sm-4 control-label">Province</label>
 <div class="col-sm-8">
 <select name="state" id="state"class="form-control" required> 
 <option value="">Select State</option>
@@ -377,7 +406,7 @@ while($row=$res->fetch_object())
 </div>	
 
 <div class="form-group">
-<label class="col-sm-4 control-label">State </label>
+<label class="col-sm-4 control-label">Province </label>
 <div class="col-sm-8">
 <select name="pstate" id="pstate"class="form-control" required> 
 <option value="">Select State</option>
@@ -473,6 +502,22 @@ $(document).ready(function() {
 		
 
 })});
+</script>
+<script>
+	$(document).ready(function() {
+    $("#withFood, #withoutFood").on("click", function() {  
+      var type = $("input[name='foodstatus']:checked").val();  
+      if (type === "add") {
+        var originalValue = parseFloat($('#fpm').val());
+      var newValue = originalValue + 2000;
+      $('#fpm').val(newValue);
+    } else if (type === "notAdd") {
+      var originalValue = parseFloat($('#fpm').val());
+      var newValue = originalValue-2000;;
+      $('#fpm').val(newValue);
+    }
+});
+});
 </script>
 
 </html>

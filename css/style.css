@@ -2,36 +2,17 @@
   margin: 0;
   padding: 0;
 }
-
 body,
 html {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  outline: none;
-  background: linear-gradient(145.11deg, #d9eef7 3.3%, #f7f7f7 44.21%);
 }
 
 .main_wrapper {
-  background: url(../img/hostel1.jpg);
-  clip-path: polygon(
-    0 0,
-    100% 0%,
-    100% 20%,
-    100% 77%,
-    92% 92%,
-    31% 100%,
-    0% 80%,
-    0% 20%
-  );
-  background-position: auto;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: black;
+  height: 220vh;
 }
-.homepage_container,
-.navbar {
-  background-color: rgba(0, 0, 0, 0.6);
-}
+
 .navbar-nav {
   margin-left: auto;
   font-size: 20px;
@@ -43,10 +24,13 @@ html {
 .nav-link:hover {
   border-bottom: 2px solid #d3a907;
 }
-
+.h1_txt {
+  font-size: 50px;
+  padding-top: 120px;
+}
 .btn-Login {
   border: 1px solid none;
-  width: 100px;
+  width: 80px;
   cursor: pointer;
   margin-left: auto;
   margin-right: 300px;
@@ -60,8 +44,8 @@ html {
 .popup {
   display: none;
   position: fixed;
-  top: 30%;
-  left: 75%;
+  top: 40%;
+  left: 65%;
   transform: translate(-40%, -40%);
   padding: 20px;
 }
@@ -71,19 +55,23 @@ html {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18), 0 4px 10px rgba(0, 0, 0, 0.258);
   border: 1px solid #ccc;
   width: 600px;
-  background: #ccc;
+  background: #000;
+  justify-content: center;
+}
+.Form2 {
+  color: white;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18), 0 4px 10px rgba(0, 0, 0, 0.258);
+  border: 1px solid #ccc;
+  width: 400px;
+  background: black;
   justify-content: center;
 }
 .hostel_img {
   width: 200px;
   position: relative;
 }
-#content_wrapper {
-  // background: linear-gradient(145.11deg, #d9eef7 3.3%, #f7f7f7 44.21%);
-  background-position: auto;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+
 .form-horizontal {
   border-radius: 8px;
   border: 1px solid white;
@@ -99,4 +87,13 @@ html {
   border: 1px solid white;
   box-sizing: border-box;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.23);
+}
+.circle {
+  width: 80px;
+  height: 120px;
+  border-radius: 0 12rem 12rem 0;
+  background: white;
+  border: 1px solid;
+  position: relative;
+  right: 15px;
 }

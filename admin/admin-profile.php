@@ -54,7 +54,7 @@ $chngpwd1->bind_param('ssi',$np,$udate,$ai);
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	<title>Admin Profile</title>
-	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
 	       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,35 +79,53 @@ return true;
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-3" href="admindashboard.php">Admin</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link mx-2" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="logout.php">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<section id="content-wrapper">	
+
+<section class="main-wrapper">	
+<nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <a class="navbar-brand text-center" href="admindashboard.php"> <img src="images/logo.png"height="80%" width="50%"alt="logo" class="logo"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                    </button>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-12 my-4">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                            <ul class="navbar-nav mx-5">
+                            <li class="nav-item">
+                            <a class="nav-link mx-3 text-light fs-5" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">AboutUs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="">Blogs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="logout.php">LogOut</a>
+                            </li>
+
+                       </ul>  
+                     </div>
+                    </div>
+                </div>
+            </div>
+                
+      </div>
+   </nav>
 		<div class="content-wrapper">
 			<div class="container-fluid">
 
 				<div class="row">
 					<div class="col-md-12">
 					
-						<h2 class="page-title text-center my-4">Admin Profile</h2>
+						<h2 class="page-title text-center my-4 text-light">Admin Profile</h2>
 	<?php	
         $aid=$_SESSION['id'];
 	    $ret="select * from admin where id=?";
@@ -122,11 +140,11 @@ return true;
 						<div class="row">
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading mx-4 px-2">Admin profile details</div>
+									<div class="panel-heading mx-4 px-2 text-light fs-4 fw-bold text-center">Admin profile details</div>
 									<div class="panel-body"> 
-										<form method="post" class="form-horizontal px-4 py-4 mx-4 my-3 text-center">
+										<form method="post" class="form-horizontal px-4 py-4 mx-4 my-3 text-center text-light">
 										<div class="text-center">
-														<h4>Edit Profile</h4>
+														<h4 class="text-light fs-4">Edit Profile</h4>
 													 </div>
 										<div class="text-center">
 													 <img src="images/admin.jpg" alt="password" class="pass-img my-3">
@@ -151,8 +169,8 @@ return true;
 												</div>
 											</div>
 												<div class="col-sm-12 col-sm-offset-2 my-4">
-													<button class="btn btn-default mx-3" type="submit">Cancel</button>
-													<input class="btn btn-primary" type="submit" name="update" value="Update Profile">
+													<button class="btn btn-danger text-light mx-3" type="submit">Cancel</button>
+													<input class="btn btn-danger text-light" type="submit" name="update" value="Update Profile">
 												</div>
 											</div>
 
@@ -163,15 +181,15 @@ return true;
 							<?php }  ?>
 								<div class="col-md-6 my-2">
 								   <div class="panel panel-default">
-									    <div class="panel-heading">Change Password</div>
+									    <div class="panel-heading text-light fs-4 fw-bold text-center">Change Password</div>
 									        <div class="panel-body">
-				                            <form method="post" class="form-horizontal my-2 px-4 py-4 text-center" name="changepwd"  id="change-pwd" onSubmit="return valid();">
+				                            <form method="post" class="form-horizontal my-2 px-4 py-4 text-center text-light" name="changepwd"  id="change-pwd" onSubmit="return valid();">
                                                  <?php if(isset($_POST['changepwd']))
                                                   { ?>
                                                     <p style="color: red"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg']=""); ?></p>
 											         <?php } ?>
 													 <div class="text-center">
-														<h4>Create New Password</h4>
+														<h4 class="text-light">Create New Password</h4>
 													 </div>
 													 <div class="text-center">
 													 <img src="images/pass.png" alt="password" class="pass-img my-4">
@@ -197,8 +215,8 @@ return true;
 											    </div>
 
 												<div class="col-sm-12 col-sm-offset-4 my-4">
-													<button class="btn btn-default mx-3" type="submit">Cancel</button>
-													<input type="submit" name="changepwd" Value="Change Password" class="btn btn-primary">
+													<button class="btn btn-danger mx-3 text-light" type="submit">Cancel</button>
+													<input type="submit" name="changepwd" Value="Change Password" class="btn btn-danger text-light">
 											    </div>
 									     </form>
 									    </div>

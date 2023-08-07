@@ -33,7 +33,7 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
 
 	<title>User Forgot Password</title>
 
-	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,10 +46,8 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
        
 		</head>
 <body>
-	
-	    <div class="login-page bk-img" style="background-image: url(img/hostel1.jpg); background-position: auto;
-               background-size: cover;
-             background-repeat: no-repeat;">
+	<section class="main_wrapper">
+	    <div class="login-page bk-img" >
 		<div class="form-content">
 			<div class="container">
 				<div class="row">
@@ -61,7 +59,7 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
                            { ?>
 					<p>Your Password is <?php echo "$password";?><br> Change the Password After login</p>
 					<?php }  ?>
-								<form action="" class="mt form-horizontal mx-auto text-center my-3 py-4 px-4" method="post">
+								<form action="" class="mt form-horizontal mx-auto text-center my-3 py-4 px-4 text-light" method="post">
 									<label for="" class="text-uppercase text-sm my-2">Your Email</label>
 									<input type="email" placeholder="Email" name="email" class="form-control mb mx-auto my-1">
 									<label for="" class="text-uppercase text-sm my-2">Your Contact no</label>
@@ -73,7 +71,7 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
 							</div>
 						</div>
 						<div class="text-center text-light">
-							<a href="hostelindex.php" class="text-light">Sign in?</a>
+							<a href="index.php" class="text-light fs-4 fw-bold text-decoration-none">Sign in?</a>
 						</div>
 					</div>
 				</div>

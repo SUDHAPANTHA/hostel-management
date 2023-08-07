@@ -42,7 +42,7 @@ $stmt=$mysqli->prepare("SELECT email,password,id FROM admin WHERE  email=? and p
 
 	
 		<head>
-		     <link rel="stylesheet" href="css/main.css" type="text/css">
+		     <link rel="stylesheet" href="css/style.css" type="text/css">
 	       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,30 +53,48 @@ $stmt=$mysqli->prepare("SELECT email,password,id FROM admin WHERE  email=? and p
          <link rel="stylesheet" href="css/owl.carousel.min.css">
        
 		</head>
+
 <body>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-3" href="../hostelindex.php"> Admin</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link mx-2" aria-current="page" href="hostelindex.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="logout.php">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+
  <section class="main-wrapper">
+ <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <a class="navbar-brand text-center" href="../index.php"> <img src="images/logo.png"height="80%" width="50%"alt="logo" class="logo"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                    </button>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-12 my-4">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                            <ul class="navbar-nav mx-5">
+                            <li class="nav-item">
+                            <a class="nav-link mx-3 text-light fs-5" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">AboutUs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="">Blogs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="logout.php">LogOut</a>
+                            </li>
+
+                       </ul>  
+                     </div>
+                    </div>
+                </div>
+            </div>
+                
+      </div>
+   </nav>
 	   <div class="login-page">
 		 <div class="form-content text-center">
 		      	<div class="container">
@@ -86,18 +104,18 @@ $stmt=$mysqli->prepare("SELECT email,password,id FROM admin WHERE  email=? and p
                      <div class="row Form1 py-4 my-4 px-4 mx-4 text-center">
                          <div class="col-lg-4 col-md-8 col-sm-12 col-12 my-2 py-2">
                            <div class="sid_img">
-                              <img src="images/hostel.png" alt="hostel" class="hostel_img">
+                              <img src="images/logo.png" alt="hostel" class="hostel_img py-4">
                            </div>
 
                 </div>
                   <div class="col-lg-8 col-md-8 col-sm-12 col-12 mx-auto my-2 py-2">
               <form method="POST" action="login.php">
                  <h2>Admin Login</h2>
-                   <input type="email" name="email" placeholder="admin@gmail.com" class="rounded-pill border-0 text-center py-1 px-1 fs-5 my-2"required>
+                   <input type="email" name="email" placeholder="admin@gmail.com" class="rounded-3 border-0 text-center py-2 px-1 fs-5 my-2"required>
                     <br><br>
-                    <input type="password" name="password" placeholder="Password" class="rounded-pill border-0 text-center py-1 px-1 fs-5"required>
+                    <input type="password" name="password" placeholder="Password" class="rounded-3 border-0 text-center py-2 px-1 fs-5"required>
                     <br><br>
-                   <input type="submit" name="login" value="Login" class="rounded-pill fs-6 py-1 px-3 border-0">
+                   <input type="submit" name="login" value="Login" class="rounded-3 fs-4 py-2 px-3 border-0 fw-bold bg-danger text-light" style="width:50%;">
             
                 </form>
             </div>
