@@ -43,7 +43,7 @@ $chngpwd1->bind_param('ssi',$np,$udate,$ai);
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	<title>Change Password</title>
-	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
 	       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,35 +70,54 @@ return true;
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-3" href="hosteldashboard.php"> Hostel</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link mx-2" aria-current="page" href="hostelindex.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="logout.php">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-	<section id="content_wrapper">
+
+	<section class="main_wrapper">
+	<nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <a class="navbar-brand text-center" href="#"> <img src="img/logo.png"height="80%" width="50%"alt="logo" class="logo"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                    </button>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-12 my-4">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                            <ul class="navbar-nav mx-5">
+                            <li class="nav-item">
+                            <a class="nav-link mx-3 text-light fs-5" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">AboutUs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="registration.php">Blogs</a>
+            
+                            </li>
+                            <li class="nav-item">
+							<a class="nav-link mx-3 text-light fs-5" href="Logout.php">LogOut</a>
+                            </li>
+
+                       </ul>  
+                     </div>
+                    </div>
+                </div>
+            </div>
+                
+      </div>
+   </nav> 
 		<div class="content-wrapper">
 			<div class="container-fluid">
 
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 					
-						<h2 class="page-title text-center my-2">Change Password </h2>
+						<h2 class="page-title text-center my-2 text-light">Change Password </h2>
 						                        <div class="text-center">
 													 <img src="img/pass.png" alt="password" class="pass1-img my-4">
 												  </div>
@@ -106,7 +125,7 @@ return true;
 	
 								<div class="col-md-10 col-lg-12">
 								<div class="panel panel-default">
-									<div class="panel-heading text-center my-2">
+									<div class="panel-heading text-center my-2 text-light">
 <?php $result ="SELECT passUdateDate FROM userregistration WHERE id=?";
 $stmt = $mysqli->prepare($result);
 $stmt->bind_param('i',$ai);
@@ -116,7 +135,7 @@ $stmt -> fetch(); ?>
 
 									Last Updation Date:&nbsp;<?php echo $result; ?> </div>
 									<div class="panel-body">
-				<form method="post" class="form-horizontal mx-auto text-center" name="changepwd" id="change-pwd" onSubmit="return valid();">
+				<form method="post" class="form-horizontal mx-auto text-center text-light" name="changepwd" id="change-pwd" onSubmit="return valid();">
     <?php            if(isset($_POST['changepwd']))
 { ?>
 											<p style="color: red"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg']=""); ?></p>
@@ -144,8 +163,8 @@ $stmt -> fetch(); ?>
 
 
 												<div class="col-sm-6 col-sm-offset-4 mx-auto my-2">
-													<button class="btn btn-default" type="submit">Cancel</button>
-													<input type="submit" name="changepwd" Value="Change Password" class="btn btn-primary">
+													<button class="btn btn-default text-light" type="submit">Cancel</button>
+													<input type="submit" name="changepwd" Value="Change Password" class="btn btn-danger">
 											</div>
 
 										</form>

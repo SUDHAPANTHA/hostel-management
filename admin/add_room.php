@@ -2,9 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
     <title>View Booking</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -83,18 +82,6 @@
         </div>
 
     </section>
-    <!-- <h1>Add New Room</h1>
-    <form method="post" action="add_room_process.php" enctype="multipart/form-data">
-        <label for="room_type">Room Type:</label>
-        <select id="room_type" name="room_type">
-            <option value="one-seater">One-Seater</option>
-            <option value="two-seater">Two-Seater</option>
-            <option value="three-seater">Three-Seater</option>
-            <option value="four-seater">Four-Seater</option>
-        </select>
-        <label for="image">Room Image:</label>
-        <input type="file" id="image" name="image" accept="image/*">
-        <input type="submit" value="Add Room">
-    </form> -->
+    
 </body>
 </html>

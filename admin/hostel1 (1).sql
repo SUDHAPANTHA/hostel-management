@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2023 at 09:29 AM
+-- Generation Time: Aug 10, 2023 at 10:43 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -55,6 +55,29 @@ CREATE TABLE `adminlog` (
   `ip` varbinary(16) NOT NULL,
   `logintime` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `id` int(11) NOT NULL,
+  `room_type` varchar(50) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `food_status` enum('WithFood','WithOutFood') NOT NULL,
+  `stay_from` varchar(100) NOT NULL,
+  `guardian_contact` varchar(20) NOT NULL,
+  `emergency_contact` varchar(20) NOT NULL,
+  `guardian_relation` varchar(100) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `total_fee` decimal(10,2) NOT NULL,
+  `approved` int(255) DEFAULT NULL,
+  `status` enum('pending','approved','cancelled') NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -117,17 +140,18 @@ CREATE TABLE `registration` (
   `updationDate` varchar(500) NOT NULL,
   `roomno` int(11) DEFAULT NULL,
   `foodstatus` int(11) DEFAULT NULL,
-  `seater` int(11) DEFAULT NULL
+  `seater` int(11) DEFAULT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `registration`
 --
 
-INSERT INTO `registration` (`id`, `feespm`, `stayfrom`, `duration`, `course`, `regno`, `firstName`, `middleName`, `lastName`, `gender`, `contactno`, `emailid`, `egycontactno`, `guardianName`, `guardianRelation`, `guardianContactno`, `corresAddress`, `corresCIty`, `corresState`, `corresPincode`, `pmntAddress`, `pmntCity`, `pmnatetState`, `pmntPincode`, `postingDate`, `updationDate`, `roomno`, `foodstatus`, `seater`) VALUES
-(13, 11000, '2023-05-28', 2, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 333333, 'nnnnn', 'sssssssss', 9999, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-14 11:53:07', '', 202, 0, 2),
-(14, 11000, '2023-05-28', 2, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 333333, 'nnnnn', 'sssssssss', 9999, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-14 11:53:45', '', 202, 0, 2),
-(15, 11000, '2023-06-06', 10, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudhapantha111@gmail.com', 8976666, 'kkkkk', 'kkkkkk', 888888, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-15 01:08:10', '', 202, 0, 2);
+INSERT INTO `registration` (`id`, `feespm`, `stayfrom`, `duration`, `course`, `regno`, `firstName`, `middleName`, `lastName`, `gender`, `contactno`, `emailid`, `egycontactno`, `guardianName`, `guardianRelation`, `guardianContactno`, `corresAddress`, `corresCIty`, `corresState`, `corresPincode`, `pmntAddress`, `pmntCity`, `pmnatetState`, `pmntPincode`, `postingDate`, `updationDate`, `roomno`, `foodstatus`, `seater`, `status`) VALUES
+(13, 11000, '2023-05-28', 2, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 333333, 'nnnnn', 'sssssssss', 9999, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-14 11:53:07', '', 202, 0, 2, 'Approved'),
+(14, 11000, '2023-05-28', 2, 'Bachelor  of Science', 10123, 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 333333, 'nnnnn', 'sssssssss', 9999, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-06-14 11:53:45', '', 202, 0, 2, 'Approved'),
+(19, 17000, '2023-07-25', 2, 'Bachelor Of commerce ', 1234, 'Maya', '', 'Gyawali', 'female', 9844712342, 'maya@gmail.com', 9845777777, 'anuj', 'Sister', 9855667788, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, 'Shantinagar', 'Kathamandu', 'Kathmandu', 44600, '2023-07-24 02:49:20', '', 201, NULL, 1, 'Approved');
 
 -- --------------------------------------------------------
 
@@ -137,22 +161,17 @@ INSERT INTO `registration` (`id`, `feespm`, `stayfrom`, `duration`, `course`, `r
 
 CREATE TABLE `rooms` (
   `id` int(11) NOT NULL,
-  `seater` int(11) NOT NULL,
-  `room_no` int(11) NOT NULL,
-  `fees` int(11) NOT NULL,
-  `posting_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `foodstatus` enum('with','without') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `room_type` varchar(50) NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `status` enum('available','booked','rejected') NOT NULL DEFAULT 'available'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `seater`, `room_no`, `fees`, `posting_date`, `foodstatus`) VALUES
-(101, 1, 201, 15000, '2023-06-14 04:24:52', NULL),
-(102, 2, 202, 11000, '2023-06-14 04:24:52', NULL),
-(103, 3, 203, 10000, '2023-06-14 04:26:10', NULL),
-(104, 4, 204, 9000, '2023-06-14 04:26:10', NULL);
+INSERT INTO `rooms` (`id`, `room_type`, `image_url`, `status`) VALUES
+(1, 'one-seater', 'images/hostel1.jpg', 'available');
 
 -- --------------------------------------------------------
 
@@ -218,7 +237,42 @@ INSERT INTO `userlog` (`id`, `userId`, `userEmail`, `userIp`, `city`, `country`,
 (28, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 03:44:23'),
 (29, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 04:08:11'),
 (30, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 05:44:50'),
-(31, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 06:11:40');
+(31, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-06-16 06:11:40'),
+(32, 26, 'myemail@mail.com', 0x3a3a31, '', '', '2023-07-23 17:20:23'),
+(33, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-24 02:08:12'),
+(34, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-24 02:08:54'),
+(35, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-24 02:09:58'),
+(36, 27, 'maya@gmail.com', 0x3a3a31, '', '', '2023-07-24 02:41:27'),
+(37, 26, 'myemail@mail.com', 0x3a3a31, '', '', '2023-07-24 02:52:56'),
+(38, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-24 14:54:59'),
+(39, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-25 04:00:45'),
+(40, 1, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-28 14:07:03'),
+(41, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-29 13:03:37'),
+(42, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-29 17:40:35'),
+(43, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-30 08:10:28'),
+(44, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-31 05:40:36'),
+(45, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-31 11:59:39'),
+(46, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-31 12:28:14'),
+(47, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-07-31 16:48:17'),
+(48, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-01 03:02:30'),
+(49, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-01 03:50:31'),
+(50, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-01 04:12:26'),
+(51, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-01 04:25:43'),
+(52, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-01 07:01:38'),
+(53, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-01 07:30:55'),
+(54, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-01 08:03:17'),
+(55, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-01 08:05:41'),
+(56, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-02 09:26:26'),
+(57, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-06 14:23:17'),
+(58, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-06 14:35:56'),
+(59, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-06 14:36:55'),
+(60, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-06 14:45:52'),
+(61, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-06 14:54:59'),
+(62, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-06 15:06:25'),
+(63, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-06 15:21:36'),
+(64, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-07 04:11:30'),
+(65, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-08 05:40:16'),
+(66, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-09 06:26:06');
 
 -- --------------------------------------------------------
 
@@ -228,7 +282,7 @@ INSERT INTO `userlog` (`id`, `userId`, `userEmail`, `userIp`, `city`, `country`,
 
 CREATE TABLE `userregistration` (
   `id` int(11) NOT NULL,
-  `regNo` varchar(255) NOT NULL,
+  `regno` varchar(255) NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `middleName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
@@ -245,13 +299,10 @@ CREATE TABLE `userregistration` (
 -- Dumping data for table `userregistration`
 --
 
-INSERT INTO `userregistration` (`id`, `regNo`, `firstName`, `middleName`, `lastName`, `gender`, `contactNo`, `email`, `password`, `regDate`, `updationDate`, `passUdateDate`) VALUES
-(1, '10123', 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 'Sudha123', '2023-05-24 15:29:42', '13-06-2023 10:31:23', ''),
-(21, '02', 'Nisha', '.', 'Pantha', 'female', 9844715244, 'nisha@gmail.com', 'Nisha123', '2023-06-12 05:28:34', '', ''),
-(22, '12345', 'Prawesh', '', 'Dhungana', 'male', 9851339619, 'prawesh@gm', '12345', '2023-06-13 04:22:04', '', ''),
-(23, '12345', 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudhapantha21@gm', 'sudha', '2023-06-13 05:28:30', '', ''),
-(24, '12345', 'Sudha', '.', 'Pantha', 'female', 9840249601, 'sudhapantha21@gm', 'sudha', '2023-06-13 05:33:22', '', ''),
-(25, '05', 'Kritika', '.', 'Yesmali', 'female', 9851339619, 'kritika@gmail.com', 'kritika', '2023-06-13 05:34:22', '', '');
+INSERT INTO `userregistration` (`id`, `regno`, `firstName`, `middleName`, `lastName`, `gender`, `contactNo`, `email`, `password`, `regDate`, `updationDate`, `passUdateDate`) VALUES
+(28, '001', 'Sudha', '', 'Pantha', 'female', 9840249601, 'sudha@gmail.com', 'Sudha123', '2023-07-28 14:33:39', '30-07-2023 02:05:03', ''),
+(34, 'REG1', 'Rosha', '', 'Pantha', 'female', 9844712342, 'sudhapantha111@gmail.com', '1234', '2023-07-28 15:35:33', '', ''),
+(35, '001', 'Nisha', '', 'Pantha', 'female', 9844715244, 'nisha@gmail.com', 'Nisha123', '2023-07-28 15:35:44', '', '');
 
 --
 -- Indexes for dumped tables
@@ -261,6 +312,12 @@ INSERT INTO `userregistration` (`id`, `regNo`, `firstName`, `middleName`, `lastN
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -310,6 +367,12 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
@@ -319,13 +382,13 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `states`
@@ -337,13 +400,13 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `userregistration`
 --
 ALTER TABLE `userregistration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
