@@ -62,8 +62,8 @@
     <?php
     // Connect to the database
     $servername = "localhost";
-    $username = "uname";
-    $password = "password";
+    $username = "root";
+    $password = "";
     $dbname = "hostel1";
     $conn = new mysqli($servername, $username, $password, $dbname);
 
