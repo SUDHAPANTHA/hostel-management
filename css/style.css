@@ -97,3 +97,6 @@ html {
   position: relative;
   right: 15px;
 }
+[name="food-items"]{
+  display: none;
+}

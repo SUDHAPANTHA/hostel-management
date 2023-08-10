@@ -64,8 +64,8 @@
     // Connect to the database (You need to configure your database connection)
     // Example using MySQLi
     $servername = "localhost";
-    $username = "uname";
-    $password = "password";
+    $username = "root";
+    $password = "";
     $dbname = "hostel1";
 
     // Create connection
@@ -87,6 +87,7 @@
             <th style='border: 1px solid white; padding: 8px;'>Name</th>
             <th style='border: 1px solid white; padding: 8px;'>Email</th>
             <th style='border: 1px solid white; padding: 8px;'>Phone</th> 
+            <th style='border: 1px solid white; padding: 8px;'>Status</th> 
         </tr>";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
@@ -94,7 +95,7 @@
             echo "<td style='border: 1px solid white; padding: 8px;'>" . $row["name"] . "</td>";
             echo "<td style='border: 1px solid white; padding: 8px;'>" . $row["email"] . "</td>";
             echo "<td style='border: 1px solid white; padding: 8px;'>" . $row["phone"] . "</td>";
-            
+            echo "<td style='border: 1px solid white; padding: 8px;'>" . $row["status"] . "</td>";
             echo "</tr>";
         }
         echo "</table>";
