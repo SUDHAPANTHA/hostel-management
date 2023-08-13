@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2023 at 10:43 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Aug 13, 2023 at 02:26 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,11 +64,13 @@ CREATE TABLE `adminlog` (
 
 CREATE TABLE `bookings` (
   `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `room_type` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `food_status` enum('WithFood','WithOutFood') NOT NULL,
+  `foodtype` varchar(25) NOT NULL,
   `stay_from` varchar(100) NOT NULL,
   `guardian_contact` varchar(20) NOT NULL,
   `emergency_contact` varchar(20) NOT NULL,
@@ -76,8 +78,16 @@ CREATE TABLE `bookings` (
   `address` varchar(200) NOT NULL,
   `total_fee` decimal(10,2) NOT NULL,
   `approved` int(255) DEFAULT NULL,
-  `status` enum('pending','approved','cancelled') NOT NULL DEFAULT 'pending'
+  `status` enum('pending','approved','cancelled') NOT NULL DEFAULT 'pending',
+  `createdAt` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `userId`, `room_type`, `name`, `email`, `phone`, `food_status`, `foodtype`, `stay_from`, `guardian_contact`, `emergency_contact`, `guardian_relation`, `address`, `total_fee`, `approved`, `status`, `createdAt`) VALUES
+(18, 34, 'three', 'Bishal Kc', 'kcbishal2001@gmail.com', '+9779866202483', 'WithFood', 'Nonveg', '2023-08-23', '75333331596', '7412369850', 'Dai', 'Koteshwor - 32, Mahadevsthan', 12000.00, 0, 'cancelled', '2023-08-11');
 
 -- --------------------------------------------------------
 
@@ -272,7 +282,12 @@ INSERT INTO `userlog` (`id`, `userId`, `userEmail`, `userIp`, `city`, `country`,
 (63, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-06 15:21:36'),
 (64, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-07 04:11:30'),
 (65, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-08 05:40:16'),
-(66, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-09 06:26:06');
+(66, 28, 'sudha@gmail.com', 0x3a3a31, '', '', '2023-08-09 06:26:06'),
+(67, 34, 'sudhapantha111@gmail.com', 0x3a3a31, '', '', '2023-08-10 14:16:49'),
+(68, 34, 'sudhapantha111@gmail.com', 0x3a3a31, '', '', '2023-08-10 14:16:49'),
+(69, 34, 'sudhapantha111@gmail.com', 0x3a3a31, '', '', '2023-08-10 15:24:39'),
+(70, 34, 'sudhapantha111@gmail.com', 0x3a3a31, '', '', '2023-08-12 15:54:48'),
+(71, 34, 'sudhapantha111@gmail.com', 0x3a3a31, '', '', '2023-08-13 12:18:35');
 
 -- --------------------------------------------------------
 
@@ -370,7 +385,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -400,7 +415,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `userregistration`

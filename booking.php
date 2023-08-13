@@ -1,4 +1,6 @@
 <?php
+session_start();
+$userid = $_SESSION['id'];
 // Check if the 'type' parameter is set in the URL
 if (isset($_GET['type'])) {
     $roomType = $_GET['type'];
@@ -73,8 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $currentDate = date("Y-m-d");
     // Prepare and execute the SQL query to insert the booking record into the database
-    $sql = "INSERT INTO bookings (room_type, name, email, phone,food_status, stay_from, guardian_contact, emergency_contact, guardian_relation, address, total_fee, createdAt, foodtype)
-       VALUES ('$roomType', '$name', '$email', '$phone','$food_status', '$stay_from', '$guardian_contact', '$emergency_contact', '$guardian_relation', '$address', $total_fee, '$currentDate', '$foodtype')";
+    $sql = "INSERT INTO bookings (`userid`,room_type, name, email, phone,food_status, stay_from, guardian_contact, emergency_contact, guardian_relation, address, total_fee, createdAt, foodtype)
+       VALUES ('$userid','$roomType', '$name', '$email', '$phone','$food_status', '$stay_from', '$guardian_contact', '$emergency_contact', '$guardian_relation', '$address', $total_fee, '$currentDate', '$foodtype')";
 
 
     if ($conn->query($sql) === TRUE) {

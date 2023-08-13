@@ -1,12 +1,14 @@
-<!-- <php
+<?php
+session_start();
+$userId = $_SESSION['id'];
 // Assume you have retrieved the booking status and message from the database
 // Replace these example values with your actual database retrieval code
  // Replace with the user's ID after login
 
 // Replace these placeholders with your actual database retrieval code
 $servername = "localhost";
-$username = "uname";
-$password = "password";
+$username = "root";
+$password = "";
 $dbname = "hostel1";
 
 // Create connection
@@ -14,15 +16,26 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
+$cancelMsg =  '';
 // Retrieve booking status and message for the user
-$sql = "SELECT approved FROM bookings";
+$sql = "SELECT approved,`createdAt` FROM bookings where userId = '$userId'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
+  $createdDate = $row["createdAt"];
+  $dateNow = date("Y-m-d");
+  $dateDiff = date_diff(date_create($createdDate), date_create($dateNow));
+  $daysDiff = (int)$dateDiff->format("%a");
+  // var_dump($daysDiff);
+  if($daysDiff >= 1){
+    $sql = "UPDATE bookings SET approved=0,  `status`='cancelled' WHERE userId = '$userId'";
+    $conn->query($sql);
+    $bookingStatus = "rejected";
+    $cancelMsg = "Your booking has been rejected due to inactivity.";
+    // echo "<script>alert('Your booking has been rejected due to inactivity.');</script>";
+  }
   $bookingStatus = $row["approved"];
-  $message =$row["approved"];
 } else {
   $bookingStatus = "";
   $message="";
@@ -30,12 +43,12 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 // Determine the appropriate message based on booking status
-if ($bookingStatus === "approved") {
-    $message = "Your booking has been approved! Enjoy your stay.";
-} elseif ($bookingStatus === "cancelled") {
-    $message = "Unfortunately, your booking has been cancelled.";
-}
-?> -->
+// if ($bookingStatus === "approved") {
+//     $message = "Your booking has been approved! Enjoy your stay.";
+// } elseif ($bookingStatus === "cancelled") {
+//     $message = "Unfortunately, your booking has been cancelled.";
+// }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -107,6 +120,9 @@ if ($bookingStatus === "approved") {
    </nav>
    
 <div class="container py-4">
+  <div class="alert alert-warning">
+    <?php echo $cancelMsg; ?>
+  </div>
   <div class="row">
     <div class="col-lg-12 p-5">
     
