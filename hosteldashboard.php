@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
     $sql = "UPDATE bookings SET approved=0,  `status`='cancelled' WHERE userId = '$userId'";
     $conn->query($sql);
     $bookingStatus = "rejected";
-    $cancelMsg = "Your booking has been rejected due to inactivity.";
+    $cancelMsg = '<div class="alert alert-warning">Your booking has been rejected due to inactivity.</div>';
     // echo "<script>alert('Your booking has been rejected due to inactivity.');</script>";
   }
   $bookingStatus = $row["approved"];
@@ -120,9 +120,8 @@ $conn->close();
    </nav>
    
 <div class="container py-4">
-  <div class="alert alert-warning">
+  
     <?php echo $cancelMsg; ?>
-  </div>
   <div class="row">
     <div class="col-lg-12 p-5">
     
