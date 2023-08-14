@@ -1,6 +1,7 @@
 <?php
 session_start();
 $userid = $_SESSION['id'];
+$err = "";
 // Check if the 'type' parameter is set in the URL
 if (isset($_GET['type'])) {
     $roomType = $_GET['type'];
@@ -200,7 +201,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label class="col-sm-8 fs-4 control-label">Email:</label> <br>
                                             <input type="email" name="email" class="form-control" required><br> <br>
                                             <label class="col-sm-8 fs-4 control-label">Phone: </label><br>
-                                            <input type="text" name="phone" class="form-control" required><br> <br>
+                                            <input type="text" maxlength="10" minlength="10" name="phone" class="form-control" required><br> <br>
                                             <label class="col-sm-8  fs-4 control-label">Food Required: <br>
                                                 <select name="food_status" class="form-control" onchange="checkFood(this.value)">
                                                     <option value="#" selected disabled>-- Select food --</option>

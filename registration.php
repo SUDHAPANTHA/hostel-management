@@ -187,7 +187,7 @@ if ($lastid == " ") {
 
                                             <div class="form-group">
                                                 <label class="control-label">Contact No : </label>
-                                                <input type="text" name="contact" id="contact" class="form-control" required="required" maxlength="10">
+                                                <input type="text" name="contact" id="contact" class="form-control" required="required" minlength="10" maxlength="10">
                                                 <span id="validation_status"></span>
                                             </div>
 
