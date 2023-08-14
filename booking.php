@@ -62,33 +62,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    // Check if the user has already booked a room
-    $sql_check_booking = "SELECT * FROM bookings WHERE email='$email' and name='$name'";
-    $result_check_booking = $conn->query($sql_check_booking);
+    $err = "";
+    if (empty($email)) {
+        $err = "<div class='alert alert-warning'>Please Enter Email</div>";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $err = "<div class='alert alert-warning'>Invalid email address</div>";
+    } else {
+        // Check if the user has already booked a room
+        $sql_check_booking = "SELECT * FROM bookings WHERE email='$email' and name='$name'";
+        $result_check_booking = $conn->query($sql_check_booking);
 
-    if ($result_check_booking->num_rows > 0) {
-        // User already booked a room, show an error message
-        echo "<h1 class='text-danger'>You have already booked a room. You can book only one room.</h1> <br> <br>";
-        echo "<a href='rooms.php' class='text-decoration-none text-dark fs-4 fw-bold'>Back to Rooms</a>";
-        exit;
-    }
+        if ($result_check_booking->num_rows > 0) {
+            // User already booked a room, show an error message
+            echo "<h1 class='text-danger'>You have already booked a room. You can book only one room.</h1> <br> <br>";
+            echo "<a href='rooms.php' class='text-decoration-none text-dark fs-4 fw-bold'>Back to Rooms</a>";
+            exit;
+        }
 
-    $currentDate = date("Y-m-d");
-    // Prepare and execute the SQL query to insert the booking record into the database
-    $sql = "INSERT INTO bookings (`userid`,room_type, name, email, phone,food_status, stay_from, guardian_contact, emergency_contact, guardian_relation, address, total_fee, createdAt, foodtype)
+        $currentDate = date("Y-m-d");
+        // Prepare and execute the SQL query to insert the booking record into the database
+        $sql = "INSERT INTO bookings (`userid`,room_type, name, email, phone,food_status, stay_from, guardian_contact, emergency_contact, guardian_relation, address, total_fee, createdAt, foodtype)
        VALUES ('$userid','$roomType', '$name', '$email', '$phone','$food_status', '$stay_from', '$guardian_contact', '$emergency_contact', '$guardian_relation', '$address', $total_fee, '$currentDate', '$foodtype')";
 
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<h1>Booking Successful!</h1>";
-        echo "<p>Your booking details have been recorded.</p>";
-        echo "<a href='rooms.php'>Back to Rooms</a>";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+        if ($conn->query($sql) === TRUE) {
+            echo "<h1>Booking Successful!</h1>";
+            echo "<p>Your booking details have been recorded.</p>";
+            echo "<a href='rooms.php'>Back to Rooms</a>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
 
-    $conn->close();
-    exit;
+        $conn->close();
+        exit;
+    }
 }
 ?>
 
@@ -184,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							}			
 							?>	 -->
                                             <div class="panel-heading text-center fs-5">Fill all Info</div>
-
+                                            <?php echo $err; ?>
                                             <h1 class="col-sm-12 mx-auto">Booking for <?php echo $roomName; ?></h1>
 
 
@@ -196,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <input type="text" name="phone" class="form-control" required><br> <br>
                                             <label class="col-sm-8  fs-4 control-label">Food Required: <br>
                                                 <select name="food_status" class="form-control" onchange="checkFood(this.value)">
-                                                <option value="#" selected disabled>-- Select food --</option>
+                                                    <option value="#" selected disabled>-- Select food --</option>
                                                     <option value="WithFood">With Food(Rs 2000 extra)</option>
                                                     <option value="WithOutFood">Without Food</option>
                                                 </select>
