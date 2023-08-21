@@ -77,7 +77,7 @@
         if (isset($_POST["approve"])) {
             $booking_id = $_POST["booking_id"];
             // Update the booking approval status to 1 (approved)
-            $sql_update_approval = "UPDATE bookings SET approved=1 , `status`='Approved' WHERE id=$booking_id";
+            $sql_update_approval = "UPDATE bookings SET approved=1 , `status`='approved' WHERE id=$booking_id";
             if ($conn->query($sql_update_approval) === TRUE) {
                 echo "Booking with ID $booking_id has been approved.";
             } else {
@@ -86,7 +86,7 @@
         } elseif (isset($_POST["reject"])) {
             $booking_id = $_POST["booking_id"];
             // Update the booking approval status to 0 (not approved)
-            $sql_update_approval = "UPDATE bookings SET approved=0,  `status`='Rejected' WHERE id=$booking_id";
+            $sql_update_approval = "UPDATE bookings SET approved=0,  `status`='cancelled' WHERE id=$booking_id";
             if ($conn->query($sql_update_approval) === TRUE) {
                 echo "Booking with ID $booking_id has been rejected.";
             } else {
@@ -95,7 +95,7 @@
         } elseif (isset($_POST["cancel"])) {
             $booking_id = $_POST["booking_id"];
             // Delete the booking from the database
-            $sql_cancel_booking = "UPDATE bookings SET approved=1, `status`='Canceled' WHERE id=$booking_id";
+            $sql_cancel_booking = "UPDATE bookings SET approved=1, `status`='canceled' WHERE id=$booking_id";
             if ($conn->query($sql_cancel_booking) === TRUE) {
                 echo "Booking with ID $booking_id has been canceled.";
             } else {
