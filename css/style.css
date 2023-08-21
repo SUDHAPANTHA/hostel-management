@@ -10,7 +10,7 @@ html {
 
 .main_wrapper {
   background: black;
-  height: 220vh;
+  height: 228vh;
 }
 
 .navbar-nav {
@@ -97,6 +97,6 @@ html {
   position: relative;
   right: 15px;
 }
-[name="food-items"]{
+[name="food-items"] {
   display: none;
 }

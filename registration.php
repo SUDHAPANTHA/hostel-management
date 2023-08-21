@@ -129,9 +129,9 @@ if ($lastid == " ") {
                                         <a class="nav-link mx-3 text-light fs-5" href="#">Service</a>
 
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link mx-3 text-light fs-5" href="registration.php">Register</a>
-                                    </li>
+                                    <!-- <li class="nav-item">
+                                        <a class="nav-link mx-3 text-light fs-5" href="registration.php"></a>
+                                    </li> -->
 
                                 </ul>
                             </div>
@@ -151,7 +151,7 @@ if ($lastid == " ") {
                                     <div class="col-lg-12 col-md-8 col-sm-12 col-12 mx-auto my-2 py-2 px-3">
                                         <img src="img/logo.png" alt="hostel" width="50%">
                                         <h2>Registration</h2>
-                                        <?php echo $err; ?>
+                                        <!-- <php echo $err; ?> -->
                                         <form method="post" action="" name="registration" class="form-hori" onSubmit="return valid();">
                                             <div class="form-group">
                                                 <label class="control-label"> Registration No : </label>
