@@ -79,7 +79,7 @@
             // Update the booking approval status to 1 (approved)
             $sql_update_approval = "UPDATE bookings SET approved=1 , `status`='approved' WHERE id=$booking_id";
             if ($conn->query($sql_update_approval) === TRUE) {
-                echo "Booking with ID $booking_id has been approved.";
+                echo "<p class='text-light'>Booking with ID $booking_id has been approved.</p>";
             } else {
                 echo "Error updating record: " . $conn->error;
             }
@@ -88,7 +88,7 @@
             // Update the booking approval status to 0 (not approved)
             $sql_update_approval = "UPDATE bookings SET approved=0,  `status`='cancelled' WHERE id=$booking_id";
             if ($conn->query($sql_update_approval) === TRUE) {
-                echo "Booking with ID $booking_id has been rejected.";
+                echo "<p class='text-light'>Booking with ID $booking_id has been rejected.</p>";
             } else {
                 echo "Error updating record: " . $conn->error;
             }
@@ -97,7 +97,7 @@
             // Delete the booking from the database
             $sql_cancel_booking = "UPDATE bookings SET approved=1, `status`='canceled' WHERE id=$booking_id";
             if ($conn->query($sql_cancel_booking) === TRUE) {
-                echo "Booking with ID $booking_id has been canceled.";
+                echo "<p class='text-light'>Booking with ID $booking_id has been canceled.</p>";
             } else {
                 echo "Error deleting record: " . $conn->error;
             }
@@ -117,7 +117,6 @@
                     <th  style='border: 1px solid white; padding: 8px;'>Name</th>
                     <th  style='border: 1px solid white; padding: 8px;'>Email</th>
                     <th  style='border: 1px solid white; padding: 8px;'>Phone</th>
-                   
                     <th  style='border: 1px solid white; padding: 8px;'>Approval</th>
                     <th  style='border: 1px solid white; padding: 8px;'>Action</th>
                 </tr>";
@@ -129,6 +128,10 @@
             echo "<td  style='border: 1px solid white; padding: 8px;'>" . $row["name"] . "</td>";
             echo "<td  style='border: 1px solid white; padding: 8px;'>" . $row["email"] . "</td>";
             echo "<td  style='border: 1px solid white; padding: 8px;'>" . $row["phone"] . "</td>";
+            
+            // echo "<td  style='border: 1px solid white; padding: 8px;'>" . $row["approved"] . "</td>";
+            // echo "<td  style='border: 1px solid white; padding: 8px;'>" . $row["status"] . "</td>";
+            
             // echo "<td>" . $row["gender"] . "</td>";
             // echo "<td>" . $row["address"] . "</td>";
             // echo "<td><img src='" . $row["image_path"] . "' width='100' height='100'></td>";
