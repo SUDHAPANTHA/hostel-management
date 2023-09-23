@@ -92,10 +92,10 @@ return true;
                             <a class="nav-link mx-3 text-light fs-5" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                          <a class="nav-link mx-3 text-light fs-5" href="#">AboutUs</a>
+                          <a class="nav-link mx-3 text-light fs-5" href="#about_us">AboutUs</a>
                             </li>
                             <li class="nav-item">
-                          <a class="nav-link mx-3 text-light fs-5" href="blog.php">Blog</a>
+                          <a class="nav-link mx-3 text-light fs-5" href="#blog_us">Blog</a>
                             </li>
                             <li class="nav-item">
                           <a class="nav-link mx-3 text-light fs-5" href="registration.php">Register</a>
@@ -162,14 +162,25 @@ return true;
         </div>
     </div>
 </div>
-<div class="qaa text-center text-light">
+<div class="qaa text-center text-danger" style="background: rgba(255, 255, 255, 0.97);
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+  z-index: 999;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 15px;
+  position: relative;
+  width: 50%;
+  box-shadow: 5px;">
 	<div class="row">
 	<div class="col-lg-4 col-md-8 col-sm-12 col-12">
 	<p class="text-center my-4"><i class="fa-solid fa-house mx-3 fa-1x"></i>Home</p>
 	</div>
 	<div class="col-lg-4 col-md-8 col-sm-12 col-12">
-	<p class="text-center my-4"><i class="fa-solid fa-car mx-3 fa-1x"></i>Rooms</p>
+	<p class="text-center my-4"><i class="fa-solid fa-bed mx-3 fa-1x"></i>Rooms</p>
 	</div>
+    
 	<div class="col-lg-4 col-md-8 col-sm-12 col-12">
 	<p class="text-center my-4"><i class="fa-solid fa-location-dot fa-1x mx-3"></i>Location</p>
 	</div>
@@ -178,16 +189,18 @@ return true;
 
 	</div>
 <hr class="text-light">
-<section>
-     <div class="container">
+<section class="bg-light">
+     <div class="container my-4">
         <div class="row">
             <div class="col-lg-12 col-sm-12 mx-auto">
-                <div class="about_us">
+                <div id="about_us">
                     <div class="about_content">
                         <div class="row my-4">
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-12 py-2 my-3 text-light">
-                                 <h3 class="fs-1 my-2">Welcome!</h3>
-                                 <p>Far far away , far from the home, far from the love <br> and affection of home, student come to build their careers.</p>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12 py-2 my-3 text-dark">
+                                 <h3 class="fs-1 my-2">Welcome To Our Hostel.</h3>
+                                 <p>Far far away , far from the home, far from the love and affection of home, student come to build their careers.Modern online hostel booking system allows clients to reserve a seat in a hostel, to rent countryside apartments via the internet. To book a place beforehand, a client has to fill in a special form on the hotel website and all the data are recorded on a hostel booking management system.A hostel booking engine registers selected room or seat, confirming that it is booked by a guest. A simple way of room reservation, provided with a booking software for hostels, is of great importance for target audience and financial returns to a hostel.
+
+Before the advent of online hostel registration system, the classic way of booking a room has been used. A traveler had to send an order by post, make a call to a hostel or hope to get an available room after arrival. Then a guest waited for a receptionist to get a chosen room, to check-in and to pay for a period of staying and extra services.</p>
                                    <button type="button" class="border-0 rounded-5 px-2 py-2 bg-danger text-light fs-4">Learn More</button>
                             </div>
                              <div class="col-lg-6 col-md-12 col-sm-12 col-12 py-2 my-3 text-light">
@@ -204,8 +217,249 @@ return true;
         </div>
         
      </div>
+    </section>
 </section>
-                                </section>
+<section class="About" style="background:black;">
+	<div class="container">
+	<div class="row">
+	<div class="col-lg-12 mx-auto text-center my-5 py-4 text-light">
+	<h2>We have the Best Rooms.</h2>
+	<div class="gallery">
+	<div class="row">
+	<div class="col-lg-3 col-md-8 col-sm-12 col-12 my-5">          
+	<div class="card">
+	<img src="img/room1.jpg" alt="Mountain" class="image">
+	<div class="card-body text-dark">
+	<p class="card-text fw-bold text-center fs-3"><strong>Single Seater</strong></p>
+<p class="card-text text-center fs-4 text-bold">Rs 15000</p>
+<div class="star">
+<div class="mr-auto float-left">
+<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+</div>
+</div>
+</div>
+</div>
+														
+</div>
+<div class="col-lg-3 col-md-8 col-sm-12 col-12 my-5">          
+<div class="card">
+<img src="img/room2.jpeg" alt="Mountain" class="image">
+<div class="card-body text-dark">
+<p class="card-text fw-bold text-center fs-3"><strong>Double Seater</strong></p>
+<p class="card-text text-center fs-4 text-bold">Rs 11000</p>
+<div class="star">
+<div class="mr-auto">
+<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+	<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+</div>
+	</div>
+	</div>
+	</div>
+
+	</div>
+	<div class="col-lg-3 col-md-8 col-sm-12 col-12 my-5">          
+	<div class="card">
+	<img src="img/room3.jpg" alt="Mountain" class="image"  style="width:305px; height:224px;">
+	<div class="card-body text-dark">
+	<p class="card-text text-center fw-bold fs-3"><strong>Three Seater</strong></p>
+	<p class="card-text text-center fs-4 text-bold">Rs 10000</p>
+	<div class="star">
+	<div class="mr-auto">
+		<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+		<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+		<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+	<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+																		
+	</div>
+	</div>
+	</div>
+	</div>
+
+	</div>
+	<div class="col-lg-3 col-md-8 col-sm-12 col-12 my-5">          
+	<div class="card">
+	<img src="img/room4.jpg" alt="Mountain" class="image"  style="width:305px; height:224px;">
+    <div class="card-body text-dark">
+	<p class="card-text fw-bold text-center fs-3"><strong>Four Seater</strong> </p>
+	<p class="card-text text-center fs-4">Rs 9000</p> 
+	<div class="star">
+	<div class="mr-auto">
+    <span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+	<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+	<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+	<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+	<span class="ion-ios-star"><i class="fa-solid fa-star text-warning text-center fa-1x"></i></span>
+	</div>
+		</div>
+
+		</div>
+			</div>
+			</div>
+			</div>
+
+			</div>
+				</div>
+				</div>
+				</div>
+				</div>
+</section>
+<section id="blog_us" class="call-section bg-light">
+		<div class="wrapper py-5">
+			<div class="container clearfix py-5 my-5">
+			<div class="choose py-5">
+		    <div class="choose-title">
+				<div class="main-title">
+				<span><em></em></span>
+				<h3 class="my-5 fa-2x">Why Choose Us</h3>
+					</div>
+				</div> 
+				<div class="container">
+				<div class="row pb-4">
+				<div class="col-lg-4 col-md-8 col-sm-12 col-12">
+				<div class="icon_wrapper">
+				<div class="icon_cover">
+				<div class="icon_part">
+				<i class="fa-solid fa-calendar"></i>
+				</div>
+		       </div>
+			<div class="icon_detail">
+			<h5 style="font-weight: bold;">Fast Booking</h5>
+		<p>Far far away , far from the home, far from the love and affection of home, student come to build their careers.</p>
+		</div>
+		</div>
+	</div>
+			<div class="col-lg-4 col-md-8 col-sm-12 col-12">
+				<div class="icon_wrapper">
+				<div class="icon_cover">
+		       <div class="icon_part">
+				<i class="fa-solid fa-phone-volume"></i>
+				</div>
+
+				</div>
+				<div class="icon_detail">
+			    <h5  style="font-weight: bold;">Support Team</h5>
+				<p>Far far away , far from the home, far from the love and affection of home, student come to build their careers.</p>
+				</div>
+				</div>
+				</div>
+				<div class="col-lg-4 col-md-8 col-sm-12 col-12">
+				<div class="icon_wrapper">
+				<div class="icon_cover">
+				<div class="icon_part">
+				<i class="fa-solid fa-face-smile"></i>
+																											
+				</div>
+
+				</div>
+				<div class="icon_detail">
+			    <h5  style="font-weight: bold;">Unforgettable Experience</h5>
+				<p>Far far away , far from the home, far from the love and affection of home, student come to build their careers.</p>
+				</div>
+				</div>
+				</div>
+										
+
+				</div>
+				</div>
+				</div>
+
+				</div>
+				</div>
+            </section>
+            <footer class="footer text-light" style="background:black;">
+<div class="container">
+<div class="row">
+	<div class="col-lg-3 col-md-8 col-sm-12 col-12 pt-5">
+		<div class="info">
+		<img src="img/logo1.png" height="80%" width="50%">
+            <div class="about py-3">
+			<p style="text-align: justify;"> Far far away , far from the home, far from the love and affection of home, student come to build their careers.</p>
+
+			</div>
+
+
+				</div>
+					</div>
+
+			<div class="col-lg-3 col-md-8 col-sm-12 col-12 pt-5">
+				<div class="camp">
+				<h5 class="px-4 text-light fw-bold">Latest Post</h5>
+				<ul class="px-4">
+				<li><a href="#" class="text-light text-decoration-none">Blog</a></li>
+				  <li><a href="#" class="text-light text-decoration-none">Rooms</a></li>
+				   <li><a href="#" class="text-light text-decoration-none">Feature</a></li>
+				   <li><a href="#" class="text-light text-decoration-none">Facility</a></li>
+		         	<li><a href="#" class="text-light text-decoration-none">Beds</a></li>
+				</ul>
+																						
+				</div>
+				</div>
+			 <div class="col-lg-3 col-md-8 col-sm-12 col-12 pt-5">
+				<div class="camp">
+			    <h5 class="px-4 text-light fw-bold">Quick links</h5>
+				<ul class="px-4">
+				<li><a href="#" class="text-light text-decoration-none">Company Profile</a></li>
+				<li><a href="#" class="text-light text-decoration-none">About Us</a></li>
+				<li><a href="#" class="text-light text-decoration-none">Contact Us</a></li>
+				<li><a href="#" class="text-light text-decoration-none">Terms & Conditions</a></li>
+				<li><a href="#" class="text-light text-decoration-none">Privacy & Policy</a></li>
+
+				</ul>
+				</div>
+		          </div>
+					<div class="col-lg-3 col-md-8 col-sm-12 col-12 pt-5 ">
+					<div class="camp">
+					<h5 class="text-light fw-bold">Contact us</h5>
+					<ul class="nav-bar nav">
+					<li>
+					<a href="#" class="text-light"><span><i class="fa-solid fa-envelope mx-3 text-light"></i></span>hostel@gmail.com</a>
+					</li>
+				<li><a href="#" class="text-light"><span><i class="fa-solid fa-mobile-screen-button mx-3 text-light"></i></span>01-445628 9840249601</a></li>
+				  <li><a href="#" class="text-light"><span><i class="fa-solid fa-globe mx-3 text-light"></i></span>www.travel.com.np</a></li>
+					<li><a href="#" class="text-light"><span><i class="fa-solid fa-location-dot mx-3 text-light"></i></span>Baneshwor, Kathmandu, Nepal</a></li>
+					</ul>
+					<div class="icon px-3">
+					<ul class="nav nav-bar">
+				    <li class="nav-item px-2 py-4">
+					<a href="#"><i class="fa-brands fa-facebook fa-2x text-light"></i></a>
+					</li>
+				<li class="nav-item px-2 py-4">
+				<a href="#"><i class="fa-brands fa-twitter-square fa-2x text-light"></i></a>
+					</li>
+					<li class="nav-item px-2 py-4">
+		           <a href="#"><i class="fa-brands fa-instagram-square fa-2x text-light"></i></a>
+					</li>
+
+					</ul>
+					</div>
+					</div>
+			        </div>
+					</div>
+					</div>
+				</footer>
+                <section class="footer_copyright_section bg-light">
+		<div class="footer_copyright">
+	  <div class="container-fluid">
+		<div class="row py-3">
+		<div class="col-sm-12" style="justify-content:center; display:flex;">
+		<p class="text-dark">
+	   © 2023 All Rights Reserved
+		<a href="#" class="text-dark">Sudha</a>
+		</p>
+		</div>
+
+				</div>
+			     </div>
+				</div>
+				</section>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
