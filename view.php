@@ -61,6 +61,10 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 mx-auto text-light px-4">
         <h1 class="text-light text-center">All Booking Records</h1>
     <?php
+    session_start();
+    if (isset($_SESSION['id'])) {
+        $userId = $_SESSION['id'];
+    }
     // Connect to the database (You need to configure your database connection)
     // Example using MySQLi
     $servername = "localhost";
@@ -77,7 +81,7 @@
     }
 
     // Fetch and display all booking records from the database
-    $sql = "SELECT * FROM bookings";
+    $sql = "SELECT * FROM bookings where userId = '$userId'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -87,7 +91,7 @@
             <th style='border: 1px solid white; padding: 8px;'>Name</th>
             <th style='border: 1px solid white; padding: 8px;'>Email</th>
             <th style='border: 1px solid white; padding: 8px;'>Phone</th> 
-            <th style='border: 1px solid white; padding: 8px;'>Status</th> 
+            
         </tr>";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
@@ -95,7 +99,7 @@
             echo "<td style='border: 1px solid white; padding: 8px;'>" . $row["name"] . "</td>";
             echo "<td style='border: 1px solid white; padding: 8px;'>" . $row["email"] . "</td>";
             echo "<td style='border: 1px solid white; padding: 8px;'>" . $row["phone"] . "</td>";
-            echo "<td style='border: 1px solid white; padding: 8px;'>" . $row["status"] . "</td>";
+            // echo "<td style='border: 1px solid white; padding: 8px; text:white;'>" . $row["status"] . "</td>";
             echo "</tr>";
         }
         echo "</table>";

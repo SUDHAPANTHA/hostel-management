@@ -66,7 +66,7 @@ return false;
 return true;
 }
 </script>
-<script>
+                             <script>
                                 function openLoginForm() {
                                 document.getElementById("loginForm").style.display = "block";
                                  }  
@@ -79,9 +79,9 @@ return true;
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                        <a class="navbar-brand text-center" href="#"> <img src="img/logo.png"height="80%" width="50%"alt="logo" class="logo"></a>
+                        <a class="navbar-brand text-center" href="#"> <img src="img/logo1.png"height="80%" width="50%"alt="logo" class="logo"></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon text-light"></span>
                     </button>
                     </div>
                     <div class="col-lg-8 col-md-6 col-sm-6 col-12 my-4">
@@ -95,7 +95,7 @@ return true;
                           <a class="nav-link mx-3 text-light fs-5" href="#">AboutUs</a>
                             </li>
                             <li class="nav-item">
-                          <a class="nav-link mx-3 text-light fs-5" href="#">Contact</a>
+                          <a class="nav-link mx-3 text-light fs-5" href="blog.php">Blog</a>
                             </li>
                             <li class="nav-item">
                           <a class="nav-link mx-3 text-light fs-5" href="registration.php">Register</a>
@@ -162,53 +162,50 @@ return true;
         </div>
     </div>
 </div>
-</section>
-<!-- <section id="aboutus_content">
-    <div class="container">
+<div class="qaa text-center text-light">
+	<div class="row">
+	<div class="col-lg-4 col-md-8 col-sm-12 col-12">
+	<p class="text-center my-4"><i class="fa-solid fa-house mx-3 fa-1x"></i>Home</p>
+	</div>
+	<div class="col-lg-4 col-md-8 col-sm-12 col-12">
+	<p class="text-center my-4"><i class="fa-solid fa-car mx-3 fa-1x"></i>Rooms</p>
+	</div>
+	<div class="col-lg-4 col-md-8 col-sm-12 col-12">
+	<p class="text-center my-4"><i class="fa-solid fa-location-dot fa-1x mx-3"></i>Location</p>
+	</div>
+						
+	</div>	
+
+	</div>
+<hr class="text-light">
+<section>
+     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                <div class="about_text">
-                    <h6 class="head6 my-3 fs-5">About Our Hostel</h6>
-                    <h4 class="fw-normal fs-3">Providing a best accomodations for students.</h4>
-                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi explicabo dignissimos repellat provident hic! Quia ea, sint ullam autem deleniti provident, enim quas, hic temporibus explicabo aliquam excepturi eius.</p>
-                       <div class="skills my-4">
-                        <div class="skills_item my-4">
-                            <h6>Realiable Wifi </h6>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <h6 class="my-3">House Keeping</h6>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <h6 class="my-3">Parking</h6>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                              </div>
-                              <h6 class="my-3">Balcony Terrace</h6>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                              </div>
-                              
+            <div class="col-lg-12 col-sm-12 mx-auto">
+                <div class="about_us">
+                    <div class="about_content">
+                        <div class="row my-4">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12 py-2 my-3 text-light">
+                                 <h3 class="fs-1 my-2">Welcome!</h3>
+                                 <p>Far far away , far from the home, far from the love <br> and affection of home, student come to build their careers.</p>
+                                   <button type="button" class="border-0 rounded-5 px-2 py-2 bg-danger text-light fs-4">Learn More</button>
+                            </div>
+                             <div class="col-lg-6 col-md-12 col-sm-12 col-12 py-2 my-3 text-light">
+                              <img src="img/room2.jpeg" alt="room" width="85%" class="py-3">
+                             </div>
                         </div>
-                        <button class="button border-0" type="button my-3">Learn More</button>
-                       </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-none d-sm-none d-md-none d-lg-block">
-                    <img src="image/about.jpg" alt="about" class="image">
-                    <div class="card card1">
-                        <div class="card-text px-3 py-3">
-                           <h2 class="fs-1 fw-bold">10</h2>
-                           <h5 class="head5 fw-normal">Years Experience</h5>
-                        </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
-    </div>
-</section> -->
+        
+     </div>
+</section>
+                                </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,39 +1,3 @@
-<!-- 
-    <php
-    // Connect to the database
-    $servername = "localhost";
-    $username = "uname";
-    $password = "password";
-    $dbname = "hostel1";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Fetch rooms data from the database
-    $sql = "SELECT * FROM rooms";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo "<div>";
-            echo "<h2>" . $row["room_type"] . " Room</h2>";
-            echo "<img src='" . $row["image_url"] . "' alt='" . $row["room_type"] . " Room'>";
-            echo "<a href='booking.php?room_id=" . $row["id"] . "'>Book Now</a>";
-            echo "</div>";
-        }
-    } else {
-        echo "";
-    }
-
-    // Close the database connection
-    $conn->close();
-    ?> -->
-
-
-
 
 
 <!DOCTYPE html>

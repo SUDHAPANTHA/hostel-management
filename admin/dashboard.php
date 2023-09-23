@@ -12,7 +12,7 @@ check_login();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard</title>
-	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,125 +20,136 @@ check_login();
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;800&display=swap" rel="stylesheet">
         <!-- fonawesom -->
         <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-		<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+		     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
          <link rel="stylesheet" href="css/owl.carousel.min.css">
        
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<section class="main-wrapper">
   <div class="container-fluid">
-    <a class="navbar-brand mx-3" href="admindashboard.php">Admin</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link mx-2" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="logout.php">Logout</a>
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <a class="navbar-brand text-center" href="rooms.php"> <img src="images/logo.png"height="80%" width="50%"alt="logo" class="logo"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                    </button>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-12 my-4">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                            <ul class="navbar-nav mx-5">
+                            <li class="nav-item">
+                            <a class="nav-link mx-3 text-light fs-5" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">AboutUs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="">Blogs</a>
+                            </li>
+                            <li class="nav-item">
+                          <a class="nav-link mx-3 text-light fs-5" href="logout.php">LogOut</a>
+                            </li>
+
+                       </ul>  
+                     </div>
+                    </div>
+                </div>
+            </div>
+                
+      </div>
+   </nav>
+   
+   <div class="container py-5">
+  <div class="row">
+    <div class="col-lg-12 p-5">
+      <h1> <i class="fa fa-tachometer text-light" aria-hidden="true"></i> <a href="admindashboard.php" class="text-decoration-none text-light">Dashboard </a></h1>
+      <hr class="text-light"/>
     </div>
   </div>
-</nav>
-
-<div class="container py-5">
-  
   <div class="row">
-   
-    
-
-    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-4 p-2">
+    <div class="col-xs-6 col-sm-12 col-md-12 col-lg-4 p-2">
       <a class="text-decoration-none" href="#">
-        <div class="card p-3 shadow bg-purple text-center border-0">
+        <div class="card p-3 shadow text-center border-0">
           <div class="card-body">
-            <i class="fa-solid fa-users fa-2x" aria-hidden="true"></i>
-            <hr />
-            <?php
-$result ="SELECT count(*) FROM registration ";
-$stmt = $mysqli->prepare($result);
-$stmt->execute();
-$stmt->bind_result($count);
-$stmt->fetch();
-$stmt->close();
-?>
-<div class="stat-panel-number h1 "><?php echo $count;?></div>
-           <p class="card-title lead">Students</p> 
-          <a href="view_bookings.php" class="block-anchor panel-footer text-decoration-none text-dark">Full Detail <i class="fa fa-arrow-right"></i></a>
+                               
+                        <?php
+                       $result ="SELECT count(*) FROM bookings";
+                        $stmt = $mysqli->prepare($result);
+                        $stmt->execute();
+                        $stmt->bind_result($count);
+                        $stmt->fetch();
+                      $stmt->close();
+                       ?>
+                       	<div class="stat-panel-number h1 "><?php echo $count;?></div>
+                       <a href="#" class="text-decoration-none text-uppercase">  <p class="card-title lead">Student</p> </a>
+                       <a href="view_bookings.php" class="block-anchor panel-footer text-decoration-none ">Full Detail <i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
       </a>
     </div>
 
-   
-    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-4 p-2">
+    <div class="col-xs-6 col-sm-12 col-md-12 col-lg-4 p-2">
       <a class="text-decoration-none" href="#">
         <div class="card p-3 shadow bg-purple text-center border-0">
           <div class="card-body">
-            <i class="fa fa-question fa-2x" aria-hidden="true"></i>
-            <hr />
-            <?php
-$result2 ="SELECT count(*) FROM courses ";
-$stmt2 = $mysqli->prepare($result2);
-$stmt2->execute();
-$stmt2->bind_result($count2);
-$stmt2->fetch();
-$stmt2->close();
-?>
-													<div class="stat-panel-number h1 "><?php echo $count2;?></div>
-         <p class="card-title lead">Total Courses</p> 
-         <a href="manage-courses.php" class="block-anchor panel-footer text-center text-decoration-none text-dark">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-4 p-2">
-      <a class="text-decoration-none" href="#">
-        <div class="card p-3 shadow bg-purple text-center border-0">
-          <div class="card-body">
-            <i class="fa fa-question fa-2x" aria-hidden="true"></i>
-            <hr />
-            <?php
-$result1 ="SELECT count(*) FROM rooms ";
-$stmt1 = $mysqli->prepare($result1);
-$stmt1->execute();
-$stmt1->bind_result($count1);
-$stmt1->fetch();
-$stmt1->close();
-?>
-													<div class="stat-panel-number h1 "><?php echo $count1;?></div>
-         <p class="card-title lead">Total rooms</p> 
-         <a href="manage-room.php" class="block-anchor panel-footer text-center text-decoration-none text-dark">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+                         <?php
+                       $result ="SELECT count(*) FROM rooms";
+                        $stmt = $mysqli->prepare($result);
+                        $stmt->execute();
+                        $stmt->bind_result($count);
+                        $stmt->fetch();
+                      $stmt->close();
+                       ?>
+                       	<div class="stat-panel-number h1 "><?php echo $count;?></div>
+                       <a href="#" class="text-decoration-none text-uppercase">  <p class="card-title lead">Rooms</p> </a>
+                       <a href="admin_panel.php" class="block-anchor panel-footer text-decoration-none ">Full Detail <i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
       </a>
     </div>
 
-    
+    <div class="col-xs-6 col-sm-12 col-md-12 col-lg-4 p-2">
+      <a class="text-decoration-none" href="#" data-toggle="modal" data-target="#modelHELP">
+        <div class="card p-3 shadow bg-purple text-center border-0">
+          <div class="card-body">
+          <?php
+                       $result ="SELECT count(*) FROM userlog";
+                        $stmt = $mysqli->prepare($result);
+                        $stmt->execute();
+                        $stmt->bind_result($count);
+                        $stmt->fetch();
+                      $stmt->close();
+                       ?>
+                       	<div class="stat-panel-number h1 "><?php echo $count;?></div>
+           <a href="access-log.php" class="text-decoration-none"> <p class="card-title lead">User Access</p></a>
+           <a href="access-log.php" class="block-anchor panel-footer text-decoration-none ">Full Detail <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
-
-<footer class="footer fixed-bottom">
-  <div class="row text-center p-3">
-    <p class="small text-muted">Develop & Design by @Sukri
-	</p>
   </div>
-</footer>
+
+</section>
+
 
 <!-- Modal -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="JS/owl.carousel.min.js"></script>
         <script src="js/script.js"></script>
-		<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-		<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+		    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+		      <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
         <script>
 
 	window.onload = function(){

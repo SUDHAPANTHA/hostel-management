@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image = $_FILES["image"]["name"];
     $target_dir = "images/";
     $target_file = $target_dir . basename($image);
+    
 
     // Upload the image to the "images" directory
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {

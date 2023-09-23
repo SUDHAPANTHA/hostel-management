@@ -90,7 +90,7 @@
             echo "<td style='border: 1px solid white; padding: 8px;'>" . $row["room_type"] . "</td>";
             echo "<td style='border: 1px solid white; padding: 8px;'><img src='" . $row["image_url"] . "' alt='" . $row["room_type"] . " Room' style='height: 100px;'></td>";
             echo "<td>
-                    <a href='edit_room.php?id=" . $row["id"] . "' class='text-light text-decoration-none fs-4'>Edit</a> |
+                    <a href='edit-room.php?id=" . $row["id"] . "' class='text-light text-decoration-none fs-4'>Edit</a> |
                     <a href='delete_room.php?id=" . $row["id"] . "' class='text-light text-decoration-none fs-4'>Delete</a>
                 </td>";
             echo "</tr>";

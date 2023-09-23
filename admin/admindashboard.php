@@ -69,7 +69,7 @@ check_login();
    <div class="container py-5">
   <div class="row">
     <div class="col-lg-12 p-5">
-      <h1> <i class="fa fa-tachometer text-light" aria-hidden="true"></i> <a href="" class="text-decoration-none text-light">Dashboard </a></h1>
+      <h1> <i class="fa fa-tachometer text-light" aria-hidden="true"></i> <a href="dashboard.php" class="text-decoration-none text-light">Dashboard </a></h1>
       <hr class="text-light"/>
     </div>
   </div>
@@ -78,7 +78,7 @@ check_login();
       <a class="text-decoration-none" href="#">
         <div class="card p-3 shadow text-center border-0">
           <div class="card-body">
-		  <i class="fa-solid fa-magnifying-glass fa-2x" aria-hidden="true"></i>
+		  <i class="fa-solid fa-user fa-2x" aria-hidden="true"></i>
             <hr />
           <a href="admin-profile.php" class="text-decoration-none">  <p class="card-title lead">AdminProfile</p> </a>
           </div>
@@ -113,7 +113,7 @@ check_login();
       <a class="text-decoration-none" href="#">
         <div class="card p-3 shadow bg-purple text-center border-0">
           <div class="card-body">
-            <i class="fa fa-question fa-2x" aria-hidden="true"></i>
+            <i class="fa-solid fa-user fa-2x" aria-hidden="true"></i>
             <hr />
             <a href="view_bookings.php" class="text-decoration-none"> <p class="card-title lead">Manage Student</p></a>
           </div>
@@ -132,7 +132,6 @@ check_login();
         </div>
       </a>
     </div>
-
   </div>
 </div>
   </div>

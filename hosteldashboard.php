@@ -1,6 +1,6 @@
 <?php
 session_start();
-$userId = $_SESSION['id'];
+// $userId = $_SESSION['userId'];
 // Assume you have retrieved the booking status and message from the database
 // Replace these example values with your actual database retrieval code
 // Replace with the user's ID after login
@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 }
 $cancelMsg = $message = '';
 // Retrieve booking status and message for the user
-$sql = "SELECT * FROM bookings where userId = '$userId'";
+$sql = "SELECT * FROM bookings";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -107,7 +107,7 @@ $conn->close();
                     <a class="nav-link mx-3 text-light fs-5" href="#">Contact</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link mx-3 text-light fs-5" href="registration.php">Blogs</a>
+                    <a class="nav-link mx-3 text-light fs-5" href="blog.php">Blogs</a>
 
                   </li>
 
